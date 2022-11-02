@@ -13,5 +13,6 @@ router.get('/logout',[isLogged],logout)
 
 router.post('/register',[upload.any(),validationRegister], process )
 router.post('/access',[validationLogin],access)
+router.post('/logout',[isLogged],logout)
 
 module.exports = router;    

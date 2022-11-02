@@ -26,4 +26,4 @@ app.use(cookie())
 app.use(userMiddleware)
 
 app.use('/users', require('./routes/users.routes'))
-app.use('/movies', require('./routes/movies.routes'))
+app.use('/', require('./routes/movies.routes'))

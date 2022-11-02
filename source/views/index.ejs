@@ -1,11 +1,27 @@
-<%- include ('./includes/head.ejs') %> 
-<body>
-    <% if (movies && movies.length > 0) { %>
-        <ul>
-            <% movies.forEach(movie => { %>
-                <%- include ('./includes/list.ejs', {movie: movie})  %> 
-            <% }) %>
-        </ul>
-    <% }%>
-</body>
-</html>
+<%- include ('./includes/head.ejs') %>
+
+    <body>
+        <div>
+        <% if (!user) { %>
+            <a href="/users/register">
+                Register
+            </a>
+            <% } %>
+        </div>
+        <div>
+            <% if (!user) { %>
+                <a href="/users/login">
+                    Log In
+                </a>
+                <% } %>
+        </div>
+        <% if (movies && movies.length> 0) { %>
+            <ul>
+                <% movies.forEach(movie=> { %>
+                    <%- include ('./includes/list.ejs', {movie: movie}) %>
+                        <% }) %>
+            </ul>
+            <% }%>
+    </body>
+
+    </html>

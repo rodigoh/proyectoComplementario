@@ -5,27 +5,28 @@
             <%= movie.title %>
         </h2>
         <p> 
-            <div><%= //movie.genre.name %></div>
+            <!--<div><%= //movie.movies_genre.name %></div>-->
             <div> <%= movie.rating %> </div>
             <div> <%= movie.awards %> </div>
             <div> <%= new Date(movie.release_date) %> </div>
             <div> <%= movie.length %> </div>
-            <div><%= //movie.actors.first_name %></div>
+            <% movie.movies_actors.map(actor => { %>
+                <div><%= actor.dataValues.first_name + ' ' + actor.dataValues.last_name  %></div>
+            <% }) %>
         </p>
-
-        <% if (user && user.isAdmin ) { %>
+        <% if (user && user.rol ) { %>
             <a href="/movies/edit/<%= movie.id %>">
                 Edit
             </a>
             <% } %>
     </article>
-    <% if (user && user.isAdmin ) { %>
+    <% if (user && user.rol ) { %>
         <form action="/movies/delete?m=DELETE" method="post">
             <input type="hidden" name="id" value="<%= movie.id %>">
             <button type="submit">Delete</button>
         </form>
         <% } %>
-        <% if (user && user.isAdmin ) { %>
+        <% if (user && user.rol ) { %>
             <a href="/movies/create">
                 Create
             </a>

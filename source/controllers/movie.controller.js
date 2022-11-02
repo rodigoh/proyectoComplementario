@@ -1,4 +1,3 @@
-const {validationResult} = require('express-validator')
 const {movie} = require("../database/models/index");
 module.exports ={
   index: async(req,res) =>{
@@ -16,7 +15,7 @@ module.exports ={
       }
     })
     if(!movieDB){
-      return res.redirect('/index/')
+      return res.redirect('/')
     }
     return res.render('movies/detail', {
       title: 'Detail of movies',
@@ -29,21 +28,14 @@ module.exports ={
     })
   },
   save: async (req, res) => {
-    let validaciones = validationResult(req)
-    let {errors} = validaciones
-    if(errors && errors.length > 0){
-      return res.render('movies/create',{
-        oldData: req.body,
-        errors: validaciones.mapped()
-      });
-    }
   await movie.create(req.body)
-    return res.redirect('/movies')
+    return res.redirect('/')
   },
-  edit: (req,res) => {
+  edit: async (req,res) => {
+    let movieDB = await movie.findByPk(req.params.id)
     return res.render('movies/edit', {
       title: 'Edit of movies',
-      movie: movie 
+      movie: movieDB 
     })
   },
   modify: async (req, res) => {
@@ -60,9 +52,9 @@ module.exports ={
   destroid:async (req,res) => {
     let movieDB = await movie.findByPk(req.body.id)
     if(!movieDB){
-      return res.redirect('/movies/');
+      return res.redirect('/');
     }
     await movieDB.destroy()
-    return res.redirect('/movies/');
+    return res.redirect('/');
   }
 }

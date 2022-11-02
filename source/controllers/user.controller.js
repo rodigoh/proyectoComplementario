@@ -16,11 +16,11 @@ const usersController = {
     }
     req.body.password = hashSync(req.body.password, 10);
 
-    req.body.isAdmin = String(req.body.username)
+    req.body.rol = String(req.body.name)
       .toLocaleLowerCase()
       .includes("@movies");
 
-    await user.create(req.body);
+    await user.create({...req.body,created_at: Date.now(), updated_at: null, email: req.body.name});
 
     return res.redirect(`/users/login`);
   },
@@ -43,13 +43,13 @@ const usersController = {
         all: true
       }
     });
-    let userDB = users.find((u) => u.username === req.body.username);
+    let userDB = users.find((u) => u.name === req.body.name);
     req.session.user = userDB;
     return res.render('users/profile');
   },
   logout: function (req, res) {
     delete req.session.user;
-    return res.redirect("/");
+    return res.redirect("/users/login");
   },
 };
 module.exports = usersController;

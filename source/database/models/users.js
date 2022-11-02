@@ -7,18 +7,31 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    username: {
+    name: {
       type: DataTypes.STRING,
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     password: {
       type: DataTypes.TEXT,
     },
-    isAdmin: {
+    rol: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+    },
+    created_at: {
+        type: DataTypes.DATE
+    },
+    updated_at: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
   };
-  let config = {};
+  let config = {
+    timestamps: false
+  };
   const User = sequelize.define(alias, cols, config);
 
   return User;

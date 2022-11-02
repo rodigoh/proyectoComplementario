@@ -1,9 +1,9 @@
 <%- include ('../includes/head.ejs')  %> 
 <body>
     <form action="/users/register" method="post">
-        <input type="text" name="username" autocomplete="off" placeholder="Username" value="<%= locals.oldData ? oldData.username : null %>">
-        <% if (locals.errors && errors.username) { %>
-            <p> <%= errors.username.msg %> </p>
+        <input type="text" name="name" autocomplete="off" placeholder="Email" value="<%= locals.oldData ? oldData.name : null %>">
+        <% if (locals.errors && errors.name) { %>
+            <p> <%= errors.name.msg %> </p>
         <% } %>
         <input type="password" name="password" autocomplete="off"  placeholder="Password" value="<%= locals.oldData ? oldData.password : null %>">
         <% if (locals.errors && errors.password) { %>
