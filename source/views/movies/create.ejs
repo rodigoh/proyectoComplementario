@@ -1,0 +1,70 @@
+<%- include ('../includes/head.ejs')  %> 
+<body>
+    <section>
+        <h2>New Movie</h2>
+        <form action="/movies/save" method="post" id="create">
+            <input 
+                type="text" 
+                name="title" 
+                placeholder="Title" 
+                autocomplete="off"
+                value="<%= locals.oldData ? oldData.title : null %>"
+            >
+            <% if (locals.errors && errors.title) { %>
+                <p> <%= errors.title.msg %> </p>
+                <% } %>
+                <input 
+                    type="number" 
+                    name="awards"  
+                    placeholder="Awards" 
+                    autocomplete="off"
+                    value="<%= locals.oldData ? oldData.awards : null %>"
+                    >
+                    <% if (locals.errors && errors.awards) { %>
+                        <p> <%= errors.awards.msg %> </p>
+                    <% } %>
+                    <input 
+                        type="date" 
+                        name="release_date"  
+                        placeholder="Realease date" 
+                        autocomplete="off"
+                        value="<%= locals.oldData ? oldData.release_date : null %>"
+                        >
+                        <% if (locals.errors && errors.release_date) { %>
+                            <p> <%= errors.release_date.msg %> </p>
+                        <% } %>
+            <input 
+                type="number" 
+                name="rating"  
+                placeholder="Rating" 
+                autocomplete="off"
+                value="<%= locals.oldData ? oldData.rating : null %>"
+                >
+                <% if (locals.errors && errors.rating) { %>
+                    <p> <%= errors.rating.msg %> </p>
+                <% } %>
+            <input 
+                type="number" 
+                name="length"  
+                placeholder="Length" 
+                autocomplete="off"
+                value="<%= locals.oldData ? oldData.length : null %>"
+                >
+                <% if (locals.errors && errors.length) { %>
+                    <p> <%= errors.length.msg %> </p>
+                <% } %>
+            <!--<input 
+                type="text" 
+                name="genre_id"  
+                placeholder="Genre" 
+                autocomplete="off"
+                value="<%=// locals.oldData ? oldData.genre_id : null %>"
+                >
+                <% //if (locals.errors && errors.genre_id) { %>
+                    <p> <%=// errors.genre_id.msg %> </p>
+                <% //} %>-->
+            <button type="submit">Save</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -32,12 +32,12 @@ module.exports = (sequelize, DataTypes) => {
     };
     const Season = sequelize.define(alias, cols, config);
     Season.associate = (models) => {
-        Season.hasMany(models.episodes, {
-            //foreignKey: "season_id"??
+        Season.hasMany(models.episode, {
+            foreignKey: "season_id"
         })
     }
     Season.associate = (models) => {
-        Season.belongsTo(models.series, {
+        Season.belongsTo(models.serie, {
             foreignKey: "serie_id"
         })
     }

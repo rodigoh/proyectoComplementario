@@ -28,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     const Serie = sequelize.define(alias, cols, config);
     Serie.associate = (models) => {
         Serie.hasMany(models.seasons, {
-            //foreignKey: "serie_id"??
+            as: "seasons",
+            foreignKey: "serie_id"
         })
     }
     Serie.associate = (models) => {

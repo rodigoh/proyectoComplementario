@@ -2,7 +2,7 @@
   "name": "proyectocomplementario",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "source/app.js",
   "scripts": {
     "test": "clear && nodemon source/app.js -e js,mjs,json,ejs,css",
     "start": "node source/app.js",

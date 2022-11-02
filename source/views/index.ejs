@@ -1,0 +1,11 @@
+<%- include ('./includes/head.ejs') %> 
+<body>
+    <% if (movies && movies.length > 0) { %>
+        <ul>
+            <% movies.forEach(movie => { %>
+                <%- include ('./includes/list.ejs', {movie: movie})  %> 
+            <% }) %>
+        </ul>
+    <% }%>
+</body>
+</html>

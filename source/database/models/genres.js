@@ -19,17 +19,21 @@ module.exports = (sequelize, DataTypes) => {
     };
     let config = {
         timestamps: false,
-        deletedAt: false
+        deletedAt: false,
+        tableName: "genres"
     };
     const Genre = sequelize.define(alias, cols, config);
     Genre.associate = (models) => {
-        Genre.hasMany(models.series, {
-            //foreignKey: "serie_id"??
+        Genre.hasMany(models.serie, {
+            as: "series",
+            foreignKey: "genre_id"
         })
     }
+
     Genre.associate = (models) => {
-        Genre.hasMany(models.seasons, {
-            //foreignKey: "genre_id"??
+        Genre.hasMany(models.movie, {
+            as: "movies_genre",
+            foreignKey: "genre_id"
         })
     }
     return Genre;

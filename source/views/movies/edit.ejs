@@ -1,0 +1,16 @@
+<%- include ('../includes/head.ejs')  %> 
+<body>
+    <section>
+        <h2>Edit Movies</h2>
+        <form  id="edit" action="/movies/edit/<%= movie.id %>?m=PUT" method="post">
+            <input type="text" name="title"placeholder="Título" autocomplete="off" value="<%= movie.title %>">
+            <input type="number" name="awards" placeholder="Awards" autocomplete="off" value="<%= movie.awards %>">
+            <input type="date" name="release_date" placeholder="Release Date" autocomplete="off" value="<%= movie.release_date %>">
+            <input type="number" name="rating" placeholder="Rating" autocomplete="off" value="<%= movie.rating %>">
+            <!--<input type="number" name="genre_id" placeholder="Genre" autocomplete="off" value="<%= //movie.genre_id %>">-->
+            <input type="number" name="length" placeholder="Length" autocomplete="off" value="<%= movie.length %>">
+            <button type="submit">Update</button>
+        </form>
+    </section>
+</body>
+</html>

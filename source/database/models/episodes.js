@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     const Episode = sequelize.define(alias, cols, config);
 
     Episode.associate = (models) => {
-        Episode.belongsTo(models.seasons, {
+        Episode.belongsTo(models.season, {
             foreignKey: "season_id"
         })
     }
